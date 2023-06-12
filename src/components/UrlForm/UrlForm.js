@@ -52,7 +52,9 @@ class UrlForm extends Component {
           onChange={this.handleNameChange}
         />
 
-        <button type="submit">
+        <button 
+          className="submit-button"
+          type="submit">
           Shorten Please!
         </button>
       </form>

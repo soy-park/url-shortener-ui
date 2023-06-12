@@ -1,7 +1,3 @@
-
-When a user visits the page, they can view the Form with the proper inputs
-When a user fills out the form, the information is reflected in the input fields
-
 describe('Main page', () => {
   beforeEach(() => {
     cy.intercept("GET", "http://localhost:3001/api/v1/urls", {
@@ -54,5 +50,20 @@ describe('Main page', () => {
     cy.get('input[name=urlToShorten]')
       .type("https://google.com")
       .should('have.value', "https://google.com")
+  })
+
+  it('should render a new shortened URL when user fills out and submits the form', () => {
+    cy.get('input[name=title]').type("Google is cool")
+      .get('input[name=urlToShorten]').type("https://google.com")
+      .get('.submit-button').click()
+
+    cy.get('.urls-container').find('.url').last()
+      .contains("h3", "Google is cool")
+
+    cy.get('.urls-container').find('.url').last()
+      .contains("a", "http://localhost:3001/useshorturl/3")
+
+    cy.get('.urls-container').find('.url').last()
+      .contains("p", "https://google.com")
   })
 })
