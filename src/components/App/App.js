@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getUrls } from '../../apiCalls';
+import { getUrls, addUrl } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
@@ -15,10 +15,17 @@ export class App extends Component {
   componentDidMount() {
     getUrls()
     .then(data => {
-      console.log(data.urls)
       this.setState({ urls: data.urls })
     })
     .catch(err => {throw new Error(`${err.message}`)})
+  }
+
+  componentDidUpdate() {
+    addUrl()
+    .then(data => { 
+      this.setState({ urls: [...this.state.urls, data] })
+    })
+    .catch(error => {throw new Error(`${err.message}`)})
   }
 
   render() {

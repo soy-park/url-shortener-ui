@@ -7,3 +7,18 @@ export const getUrls = () => {
       return response.json()
   }) 
 }
+
+export const addUrl = (newUrl) => {
+  return fetch('http://localhost:3001/ideas', {
+    method: 'POST',
+    body: JSON.stringify(newUrl),
+    headers: {"Content-Type": "application/json"}
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`${response.status}, ${response.statusText}`);
+    } else {
+      return response.json()
+    }
+  })
+}
