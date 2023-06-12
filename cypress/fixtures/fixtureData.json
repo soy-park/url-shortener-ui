@@ -7,14 +7,8 @@
     }, 
     {
         "id": 2, 
-        "url": "https://google.com",
+        "long_url": "https://google.com",
         "short_url": "http://localhost:3001/useshorturl/2",
         "title": "Google"
-    }, 
-    {
-        "id": 3, 
-        "url": "https://netflix.com",
-        "short_url": "http://localhost:3001/useshorturl/3",
-        "title": "Netflix"
     }
 ]
