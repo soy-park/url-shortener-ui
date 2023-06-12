@@ -24,7 +24,6 @@ export class App extends Component {
     addUrl(newUrl)
       .then(data => { 
         this.setState({ urls: [...this.state.urls, data] })
-        console.log(this.state.urls)
       })
       .catch(err => {throw new Error(`${err.message}`)})
     }
