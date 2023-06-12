@@ -20,22 +20,22 @@ export class App extends Component {
     .catch(err => {throw new Error(`${err.message}`)})
   }
 
-  componentDidUpdate() {
-    addUrl()
-    .then(data => { 
-      this.setState({ urls: [...this.state.urls, data] })
-    })
-    .catch(error => {throw new Error(`${err.message}`)})
-  }
+  submitUrl = (newUrl) => {
+    addUrl(newUrl)
+      .then(data => { 
+        this.setState({ urls: [...this.state.urls, data] })
+        console.log(this.state.urls)
+      })
+      .catch(err => {throw new Error(`${err.message}`)})
+    }
 
   render() {
     return (
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm />
+          <UrlForm urls={this.state.urls} addUrl={this.submitUrl} />
         </header>
-
         <UrlContainer urls={this.state.urls}/>
       </main>
     );

@@ -9,16 +9,16 @@ export const getUrls = () => {
 }
 
 export const addUrl = (newUrl) => {
-  return fetch('http://localhost:3001/ideas', {
+  return fetch('http://localhost:3001/api/v1/urls', {
     method: 'POST',
     body: JSON.stringify(newUrl),
-    headers: {"Content-Type": "application/json"}
+    headers: { "Content-Type": "application/json" }
   })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`${response.status}, ${response.statusText}`);
-    } else {
-      return response.json()
-    }
-  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`${response.status}, ${response.statusText}`);
+      } else {
+        return response.json();
+      }
+    })
 }
